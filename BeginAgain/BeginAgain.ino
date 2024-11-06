@@ -18,6 +18,7 @@ float accel_x, accel_y, accel_z;
 
 float gyro_x, gyro_y, gyro_z;
 
+
 void loop() {
 
   // IMU.accelerationAvailable()와 IMU.gyroscopeAvailable() 
@@ -41,7 +42,6 @@ void loop() {
     Serial.print(gyro_z);
     Serial.println("}");
 
-    delay(100);
   }
   
 
