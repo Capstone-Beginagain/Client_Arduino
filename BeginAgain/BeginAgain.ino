@@ -6,20 +6,20 @@
 int status = WL_IDLE_STATUS;
 char ssid[] = "TestSon";  // Wi-Fi SSID
 char pass[] = "00012340"; // Wi-Fi 비밀번호
-unsigned int localPort = 9877;   // 아두이노의 UDP 수신 포트
-unsigned int serverPort = 9877; // 자바 서버의 포트
+unsigned int localPort = 9870;   // 아두이노의 UDP 수신 포트
+unsigned int serverPort = 9870; // 자바 서버의 포트
 //9877: 왼손, 9878: 오른손, 9879:왼발, 9880: 오른발
 //IPAddress ip(192,168,195,220);  // 아두이노의 고정 IP
-IPAddress serverIP(192,168,195,183); // 자바 서버의 IP 
+IPAddress serverIP(192,168,195,93); // 자바 서버의 IP 
 WiFiUDP Udp; // WiFiUDP 객체 생성
 
 float accel_x, accel_y, accel_z;
 float gyro_x, gyro_y, gyro_z;
 void setup() {
   Serial.begin(57600);
-  while (!Serial) {
-    ; // 시리얼 포트 준비 대기
-  }
+  // while (!Serial) {
+  //   ; // 시리얼 포트 준비 대기
+  // }
 
   delay(3000);
   if (WiFi.status() == WL_NO_MODULE) {
@@ -96,12 +96,12 @@ void loop() {
     Udp.beginPacket(serverIP, serverPort);
     Udp.print(jsonMessage);
     Udp.endPacket();
-    Serial.println("Message sent: " + jsonMessage);
-    delay(500);
+    //Serial.println("Message sent: " + jsonMessage);
+    delay(10);
 
   }
 
-  delay(500);
+  delay(10);
 }
 
 
